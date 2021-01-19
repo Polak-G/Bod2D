@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Gregor/CLionProjects/Bod2D/Bod2D.h
+
+C:/Users/Gregor/CLionProjects/Bod2D/main.cpp
+iostream
+-
+Bod2D.h
+C:/Users/Gregor/CLionProjects/Bod2D/Bod2D.h
+
