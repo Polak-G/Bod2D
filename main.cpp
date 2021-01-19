@@ -10,10 +10,18 @@ int main()
     std::cout<<Prvy<<Druhy<<Treti;
 
     //std::cout<<Bod2D()<<Bod2D(3)<<Bod2D(1,6);
-    Prvy.spocitaj(Druhy).vypisBod();
-    Prvy.odcitaj(Druhy).vypisBod();
-    Prvy.vynasob(Prvy, 3).vypisBod();
-
+    Prvy=Prvy+(Druhy);
+    std::cout<<Prvy;
+    Prvy=Prvy-(Druhy);
+    std::cout<<Prvy;
+    Prvy=Prvy*(5);
+    std::cout<<Prvy;
+    Prvy=Prvy/(5);
+    std::cout<<Prvy;
+    Prvy=(5)*Prvy;
+    std::cout<<Prvy;
+    Prvy=(5)/Prvy;
+    std::cout<<Prvy;
     return 0;
 }
 
@@ -69,21 +77,28 @@ std::istream & operator>>(std::istream & is,Bod2D & other)
     return is;
 }
 
-Bod2D Bod2D::spocitaj(const Bod2D &other) const
+Bod2D Bod2D::operator+(const Bod2D &other) const
 {
-    return {(x+other.x),(y+other.y)};
+    return {(x+ other.x), (y+other.y)};
 }
-void Bod2D::vypisBod() const
+Bod2D Bod2D::operator-(const Bod2D &other) const
 {
-    std::cout <<"Bod ma suradnice ["<<x<<","<<y<<"]"<<std::endl;
-}
-
-Bod2D Bod2D::odcitaj(const Bod2D &other) const
-{
-    return {(x-other.x),(y-other.y)};
+    return {(x- other.x), (y-other.y)};
 }
 
-Bod2D Bod2D::vynasob(const Bod2D, float cislo)const
+Bod2D Bod2D::operator*(float cislo) const
 {
     return {(x*cislo),(y*cislo)};
+}
+Bod2D Bod2D::operator/(float cislo) const
+{
+    return {(x/cislo),(y/cislo)};
+}
+Bod2D operator*(float cislo, Bod2D &other)
+{
+    return {(cislo*other.x),(cislo*other.y)};
+}
+Bod2D operator/(float cislo, const Bod2D & other)
+{
+    return {(cislo/other.x),(cislo/other.y)};
 }
