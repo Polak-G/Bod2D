@@ -1,5 +1,7 @@
 #include <iostream>
+#include <math.h>
 #include "Bod2D.h"
+
 
 int main()
 {
@@ -10,18 +12,21 @@ int main()
     std::cout<<Prvy<<Druhy<<Treti;
 
     //std::cout<<Bod2D()<<Bod2D(3)<<Bod2D(1,6);
-    Prvy=Prvy+(Druhy);
-    std::cout<<Prvy;
-    Prvy=Prvy-(Druhy);
-    std::cout<<Prvy;
-    Prvy=Prvy*(5);
-    std::cout<<Prvy;
-    Prvy=Prvy/(5);
-    std::cout<<Prvy;
-    Prvy=(5)*Prvy;
-    std::cout<<Prvy;
-    Prvy=(5)/Prvy;
-    std::cout<<Prvy;
+    //Prvy=Prvy+(Druhy);
+    std::cout<<Prvy+(Druhy);
+    //Prvy=Prvy-(Druhy);
+    std::cout<<Prvy-(Druhy);
+    //Prvy=Prvy*(5);
+    std::cout<<Prvy*(5);
+    //Prvy=Prvy/(5);
+    std::cout<<Prvy/(5);
+    //Prvy=(5)*Prvy;
+    std::cout<<(5)*Prvy;
+    //Prvy=(5)/Prvy;
+    std::cout<<(5)/Prvy;
+    std::cout<< "Vzdialenost bodu od 0 je: " <<Prvy.vzdialenost0() << std::endl;
+    std::cout<< "Vzdialenost bodov je: " <<Prvy.vzdialenost(Druhy) << std::endl;
+    Prvy.Stred(Druhy);
     return 0;
 }
 
@@ -101,4 +106,17 @@ Bod2D operator*(float cislo, Bod2D &other)
 Bod2D operator/(float cislo, const Bod2D & other)
 {
     return {(cislo/other.x),(cislo/other.y)};
+}
+float Bod2D::vzdialenost0() const
+{
+    return sqrt((x*x)+(y*y));
+}
+float Bod2D::vzdialenost(const Bod2D &other) const
+{
+    return sqrt(((x-other.x)*(x-other.x))+((y-other.y)*(y-other.y)));
+}
+void Bod2D::Stred(const Bod2D &otherBod)
+{
+    Bod2D other(x+otherBod.x,y+otherBod.y);
+    std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
 }

@@ -26,7 +26,9 @@ public:
     Bod2D operator/(float cislo) const;
     friend Bod2D operator*(float cislo, Bod2D &other);
     friend Bod2D operator/(float cislo, const Bod2D & other);
-
+    float vzdialenost0() const;
+    float vzdialenost(const Bod2D &other) const;
+    void Stred(const Bod2D & other);
 
 };
 #endif //BOD2D_BOD2D_H
