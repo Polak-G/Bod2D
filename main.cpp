@@ -115,8 +115,8 @@ float Bod2D::vzdialenost(const Bod2D &other) const
 {
     return sqrt(((x-other.x)*(x-other.x))+((y-other.y)*(y-other.y)));
 }
-void Bod2D::Stred(const Bod2D &otherBod)
+void Bod2D::Stred(const Bod2D &otherB)
 {
-    Bod2D other(x+otherBod.x,y+otherBod.y);
+    Bod2D other(x+otherB.x,y+otherB.y);
     std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
 }
