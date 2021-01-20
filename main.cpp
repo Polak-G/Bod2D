@@ -23,10 +23,11 @@ int main()
     //Prvy=(5)*Prvy;
     std::cout<<(5)*Prvy;
     //Prvy=(5)/Prvy;
-    std::cout<<(5)/Prvy;
-    std::cout<< "Vzdialenost bodu od 0 je: " <<Prvy.vzdialenost0() << std::endl;
+    //std::cout<<(5)/Prvy;
+    //std::cout<< "Vzdialenost bodu od 0 je: " <<Prvy.vzdialenost0() << std::endl;
+    std::cout<< "Vzdialenost bodu od 0 je: " <<Prvy.vzdialenost() << std::endl;
     std::cout<< "Vzdialenost bodov je: " <<Prvy.vzdialenost(Druhy) << std::endl;
-    Prvy.Stred(Druhy);
+    std::cout<< "Stred bodov je: "<<Prvy.stred(Druhy)<< std::endl;
     return 0;
 }
 
@@ -97,9 +98,14 @@ Bod2D Bod2D::operator*(float cislo) const
 }
 Bod2D Bod2D::operator/(float cislo) const
 {
+    if(cislo==0)
+    {
+        cislo= 1;
+        std::cout<< "Nulou sa delit neda."<< std::endl;
+    }
     return {(X/cislo),(Y/cislo)};
 }
-Bod2D operator*(float cislo, Bod2D &other)
+Bod2D operator*(float cislo, const Bod2D &other)
 {
     return {(cislo*other.X),(cislo*other.Y)};
 }
@@ -107,16 +113,24 @@ Bod2D operator*(float cislo, Bod2D &other)
 {
     return {(cislo/other.X),(cislo/other.Y)};
 }*/
-float Bod2D::vzdialenost0() const
+/*float Bod2D::vzdialenost0() const
 {
     return sqrt((X*X)+(Y*Y));
-}
-float Bod2D::vzdialenost(const Bod2D &other) const
+}*/
+float Bod2D::vzdialenost(const Bod2D &other)
 {
     return sqrt(((X-other.X)*(X-other.X))+((Y-other.Y)*(Y-other.Y)));
 }
-void Bod2D::Stred(const Bod2D &otherB)
+
+/*void Bod2D::Stred(const Bod2D &otherB)
 {
     Bod2D other(X+otherB.X,Y+otherB.Y);
     std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
+}
+*/
+Bod2D Bod2D::stred(const Bod2D &other)
+{
+
+    return Bod2D (((X+other.X)/2),((Y+other.Y)/2));
+
 }

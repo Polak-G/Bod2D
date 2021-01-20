@@ -24,11 +24,12 @@ public:
     Bod2D operator-(const Bod2D &other) const;
     Bod2D operator*(float cislo) const;
     Bod2D operator/(float cislo) const;
-    friend Bod2D operator*(float cislo, Bod2D &other);
+    friend Bod2D operator*(float cislo, const Bod2D &other);
     //friend Bod2D operator/(float cislo, const Bod2D & other);
     float vzdialenost0() const;
-    float vzdialenost(const Bod2D &other) const;
-    void Stred(const Bod2D & other);
+    float vzdialenost(const Bod2D &other = Bod2D(0,0));
+    //void Stred(const Bod2D & other);
+    Bod2D stred(const Bod2D & other);
 
 
 };
