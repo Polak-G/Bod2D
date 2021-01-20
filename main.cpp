@@ -103,10 +103,10 @@ Bod2D operator*(float cislo, Bod2D &other)
 {
     return {(cislo*other.X),(cislo*other.Y)};
 }
-Bod2D operator/(float cislo, const Bod2D & other)
+/*Bod2D operator/(float cislo, const Bod2D & other)
 {
     return {(cislo/other.X),(cislo/other.Y)};
-}
+}*/
 float Bod2D::vzdialenost0() const
 {
     return sqrt((X*X)+(Y*Y));
