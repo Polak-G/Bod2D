@@ -7,8 +7,8 @@
 class Bod2D
 {
 private:
-    float x;
-    float y;
+    float X;
+    float Y;
 public:
     float getX() const;
     float getY() const;

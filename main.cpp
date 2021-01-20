@@ -33,90 +33,90 @@ int main()
 Bod2D::Bod2D()
 {
     std::cout<<"Zadaj suradnicu x: ";
-    std::cin>>x;
+    std::cin>>X;
     std::cout<<"Zadaj suradnicu y: ";
-    std::cin>>y;
+    std::cin>>Y;
 }
 
 Bod2D::Bod2D(float mojeX)
 {
-    x = mojeX;
+    X = mojeX;
     std::cout << "Zadaj suradnicu y: ";
-    std::cin >> y;
+    std::cin >> Y;
 }
 Bod2D::Bod2D(float mojeX, float mojeY)
 {
-    x=mojeX;
-    y=mojeY;
+    X=mojeX;
+    Y=mojeY;
 }
 
 float Bod2D::getX() const
 {
-    return x;
+    return X;
 }
 
 float Bod2D::getY() const
 {
-    return y;
+    return Y;
 }
 void Bod2D::setX(float mojeX)
 {
-    x=mojeX;
+    X=mojeX;
 }
 void Bod2D::setY(float mojeY)
 {
-    y=mojeY;
+    Y=mojeY;
 }
 std::ostream &operator<<(std::ostream &os, const Bod2D &other)
 {
-    os<<"Bod ma suradnice ["<<other.x<<","<<other.y<<"]"<<std::endl;
+    os<<"Bod ma suradnice ["<<other.X<<","<<other.Y<<"]"<<std::endl;
     return os;
 }
 
 std::istream & operator>>(std::istream & is,Bod2D & other)
 {
     std::cout<<"Zadaj suradnicu x: ";
-    is>>other.x;
+    is>>other.X;
     std::cout<<"Zadaj suradnicu y: ";
-    is>>other.y;
+    is>>other.Y;
     return is;
 }
 
 Bod2D Bod2D::operator+(const Bod2D &other) const
 {
-    return {(x+ other.x), (y+other.y)};
+    return {(X+ other.X), (Y+other.Y)};
 }
 Bod2D Bod2D::operator-(const Bod2D &other) const
 {
-    return {(x- other.x), (y-other.y)};
+    return {(X- other.X), (Y-other.Y)};
 }
 
 Bod2D Bod2D::operator*(float cislo) const
 {
-    return {(x*cislo),(y*cislo)};
+    return {(X*cislo),(Y*cislo)};
 }
 Bod2D Bod2D::operator/(float cislo) const
 {
-    return {(x/cislo),(y/cislo)};
+    return {(X/cislo),(Y/cislo)};
 }
 Bod2D operator*(float cislo, Bod2D &other)
 {
-    return {(cislo*other.x),(cislo*other.y)};
+    return {(cislo*other.X),(cislo*other.Y)};
 }
 Bod2D operator/(float cislo, const Bod2D & other)
 {
-    return {(cislo/other.x),(cislo/other.y)};
+    return {(cislo/other.X),(cislo/other.Y)};
 }
 float Bod2D::vzdialenost0() const
 {
-    return sqrt((x*x)+(y*y));
+    return sqrt((X*X)+(Y*Y));
 }
 float Bod2D::vzdialenost(const Bod2D &other) const
 {
-    return sqrt(((x-other.x)*(x-other.x))+((y-other.y)*(y-other.y)));
+    return sqrt(((X-other.X)*(X-other.X))+((Y-other.Y)*(Y-other.Y)));
 }
 void Bod2D::Stred(const Bod2D &otherB)
 {
-    Bod2D other(x+otherB.x,y+otherB.y);
+    Bod2D other(X+otherB.X,Y+otherB.Y);
     std::cout<< "Stred medzi bodmi je: " << other/2 << std::endl;
 }
