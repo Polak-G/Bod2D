@@ -10,6 +10,15 @@ private:
     float X;
     float Y;
 public:
+    class streamError
+    {
+    private:
+        const char* msg;
+    public:
+        streamError(const char *sprava):msg(sprava){};
+        void getMsg() const;
+    };
+public:
     float getX() const;
     float getY() const;
     void setX(float mojeX);
@@ -26,7 +35,7 @@ public:
     Bod2D operator/(float cislo) const;
     friend Bod2D operator*(float cislo, const Bod2D &other);
     //friend Bod2D operator/(float cislo, const Bod2D & other);
-    float vzdialenost0() const;
+    //float vzdialenost0() const;
     float vzdialenost(const Bod2D &other = Bod2D(0,0));
     //void Stred(const Bod2D & other);
     Bod2D stred(const Bod2D & other);

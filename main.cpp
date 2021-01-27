@@ -1,12 +1,49 @@
 #include <iostream>
 #include <math.h>
 #include "Bod2D.h"
-
-
+#include<fstream>
+using namespace std;
 int main()
 {
+    int udaj[4];
+    float V, Min=1000;
+
+
+    std::ifstream fin;
+    try
+    {
+        fin.open("suradnice.txt");
+        if(!fin.is_open())
+        {
+            throw Bod2D::streamError("Pri praci so suborom sa vyskytla chyba!");
+        }
+        for(int i=0; i<100; ++i)
+        {
+
+            for (int & i : udaj)
+            {
+                fin >> i;
+            }
+            Bod2D A(udaj[0], udaj[1]);
+            Bod2D B(udaj[2], udaj[3]);
+
+            V = A.vzdialenost(B);
+            if (V < Min) {
+                Min = V;
+            }
+        }
+        fin.close();
+    }
+    catch (const Bod2D::streamError & ex)
+    {
+        ex.getMsg();
+        return 1;
+    }
+
+    std::cout<<"Najmensia vzdialenost je: "<<Min<< std::endl;
+/*
     Bod2D Prvy;
-    Bod2D Druhy(3);
+    Bod2D Druhy(2);
     Bod2D Treti(1,6);
 
     std::cout<<Prvy<<Druhy<<Treti;
@@ -28,6 +65,7 @@ int main()
     std::cout<< "Vzdialenost bodu od 0 je: " <<Prvy.vzdialenost() << std::endl;
     std::cout<< "Vzdialenost bodov je: " <<Prvy.vzdialenost(Druhy) << std::endl;
     std::cout<< "Stred bodov je: "<<Prvy.stred(Druhy)<< std::endl;
+*/
     return 0;
 }
 
@@ -133,4 +171,9 @@ Bod2D Bod2D::stred(const Bod2D &other)
 
     return Bod2D (((X+other.X)/2),((Y+other.Y)/2));
 
+}
+
+void Bod2D::streamError::getMsg() const
+{
+    std::cout<<msg;
 }
